@@ -24,6 +24,6 @@ link_directories(${binary_dir}/lib)
 
 enable_testing()
 add_executable(tests test.cpp)
-target_link_libraries(tests gtest gtest_main gmock gmock_main pthread )
+target_link_libraries(tests gtest gtest_main gmock gmock_main pthread cov)
 include(GoogleTest)
 gtest_discover_tests(tests)

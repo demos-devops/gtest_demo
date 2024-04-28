@@ -16,12 +16,12 @@ protected:
 };
 
 int main(int argc, char **argv) {
-    //ccov();
+    // ccov(); Result: Illegal instruction
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
 
-TEST(HelloWorldTest, OutputTest) {
+TEST(HelloWorldTest, OutputTest) {ccov();
     testing::internal::CaptureStdout();
     EXPECT_EQ(0, system("./main"));
     std::string output = testing::internal::GetCapturedStdout();
