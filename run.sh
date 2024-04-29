@@ -22,7 +22,7 @@ genhtml ut-cov-filtered.info --output-directory ut-coverage-report > log.txt
 
 echo ==== last result ====
 awk '/Overall coverage rate:/ {getline; print $2}' log.txt
-
+i
 # pipeline
 #    publishHTML([
 #        allowMissing: false,
