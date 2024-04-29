@@ -1,7 +1,7 @@
 set -e
 
 # make sure gcov & g++ version
-sudo apt install lcov -y
+#sudo apt install lcov -y
 
 if [ ! -d build ] ; then
 	mkdir build
@@ -18,7 +18,10 @@ mkdir coverage
 cd coverage
 lcov --directory ../build --capture --output-file ut-coverage.info
 lcov -e ut-coverage.info '*source*' --output-file ut-cov-filtered.info
-genhtml ut-cov-filtered.info --output-directory ut-coverage-report
+genhtml ut-cov-filtered.info --output-directory ut-coverage-report > log.txt
+
+echo ==== last result ====
+awk '/Overall coverage rate:/ {getline; print $2}' log.txt
 
 # pipeline
 #    publishHTML([
