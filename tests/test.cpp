@@ -56,7 +56,7 @@ TEST(CalculatorTest, AddTest) {
     int result = mockCalculator.add(2, 3);
     EXPECT_EQ(result, 5);
     int *p = (int *)0x99;
-    *p = 9;
+    //*p = 9;
 }
 
 // 要模拟的类
