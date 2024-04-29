@@ -1,5 +1,8 @@
 set -e
 
+# make sure gcov & g++ version
+sudo apt install lcov -y
+
 if [ ! -d build ] ; then
 	mkdir build
 fi
@@ -14,5 +17,5 @@ rm -rf coverage
 mkdir coverage
 cd coverage
 lcov --directory ../build --capture --output-file ut-coverage.info
-#lcov -e ut-coverage.info '*source*' --output-file ut-cov-filtered.info
-#genhtml ut-cov-filtered.info --output-directory ut-coverage-report
+lcov -e ut-coverage.info '*source*' --output-file ut-cov-filtered.info
+genhtml ut-cov-filtered.info --output-directory ut-coverage-report
