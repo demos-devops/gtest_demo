@@ -21,9 +21,10 @@ include_directories(${source_dir}/googletest/include)
 include_directories(${source_dir}/googlemock/include)
 link_directories(${binary_dir}/lib)
 
+aux_source_directory(feature-service feature-srv)
 
 enable_testing()
-add_executable(tests test.cpp)
+add_executable(tests main.cpp ${feature-srv})
 target_link_libraries(tests gtest gtest_main gmock gmock_main pthread cov)
 include(GoogleTest)
 gtest_discover_tests(tests)

@@ -2,7 +2,7 @@
 #include <gmock/gmock.h>
 #include <iostream>
 
-#include "../source/client.h"
+#include "../../source/client.h"
 int ccov(void);
 
 class MockOutput {
@@ -14,11 +14,6 @@ class MockOutputTest : public ::testing::Test {
 protected:
     MockOutput output;
 };
-
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
 
 TEST(HelloWorldTest, OutputTest) {
     ccov();
@@ -83,29 +78,3 @@ public:
         return x * 3;
     }
 };
-#if 0
-using namespace testing;
-// 测试用例
-TEST(MockTest, MockVariousFunctions) {
-    // 创建 Mock 对象
-    NiceMock<MyClass> mock;
-
-    // 设置虚拟函数的行为
-    EXPECT_CALL(mock, virtualFunction(5))
-        .WillOnce(Return(10));
-
-    // 测试虚拟函数
-    EXPECT_EQ(mock.virtualFunction(5), 10);
-
-    // 测试非虚拟函数
-    EXPECT_EQ(mock.nonVirtualFunction(3), 6);
-
-    // 测试静态函数
-    EXPECT_EQ(MyClass::staticFunction(5), 25);
-
-    // 由于 Google Mock 不能直接模拟模板函数，因此我们需要手动定义一个模板函数，并将其模拟为普通成员函数
-    EXPECT_EQ(mock.templateFunction(4), 12);
-
-
-}
-#endif
